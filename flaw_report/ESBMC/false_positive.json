@@ -1,0 +1,13 @@
+{
+    "notes": {
+        "missed": {
+            "CWE-457": {
+                "name": "UninitializedVariable",
+                "File": "code_cpp/src/Statistics.cpp",
+                "Result": "VERIFICATION SUCCESSFUL",
+                "Comment": "ESBMC 未在该最小化用例上报告未初始化变量的错误（可能不会在此写法下触发警告）。"
+            }
+        }
+    }
+}
+

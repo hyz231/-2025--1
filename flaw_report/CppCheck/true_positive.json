@@ -1,0 +1,30 @@
+{
+    "1": {
+        "CWE": "CWE-415",
+        "name": "doubleFree",
+        "File": "code_cpp/src/Search.cpp",
+        "Line": "77",
+        "At": "delete resultCount;  // Double free - resultCount was already deleted above"
+    },
+    "2": {
+        "CWE": "CWE-476",
+        "name": "nullPointer",
+        "File": "code_cpp/src/Statistics.cpp",
+        "Line": "118",
+        "At": "std::cout << \"Formatted: \" << summaryBuffer << std::endl;"
+    },
+    "3": {
+        "CWE": "CWE-563",
+        "name": "unusedAllocatedMemory",
+        "File": "code_cpp/src/Storage.cpp",
+        "Line": "69",
+        "At": "char* buffer = new char[1024];"
+    },
+    "4": {
+        "CWE": "CWE-457",
+        "name": "legacyUninitvar",
+        "File": "code_cpp/src/Statistics.cpp",
+        "Line": "135",
+        "At": "sum += static_cast<int>(record.getAmount());  // Using uninitialized 'sum'"
+    }
+}

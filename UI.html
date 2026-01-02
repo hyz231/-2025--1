@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>记账App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .header {
+            background-color: #2196F3;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            padding-bottom: 70px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            background-color: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .nav-item {
+            flex: 1;
+            text-align: center;
+            padding: 12px 0;
+            font-size: 12px;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .nav-item.active {
+            color: #2196F3;
+        }
+        
+        .nav-item i {
+            display: block;
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        
+        .section {
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        .summary-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .summary-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .summary-numbers {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .income {
+            color: #4CAF50;
+        }
+        
+        .expense {
+            color: #F44336;
+        }
+        
+        .balance {
+            color: #2196F3;
+        }
+        
+        .record-list {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .record-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .record-item:last-child {
+            border-bottom: none;
+        }
+        
+        .record-category {
+            font-weight: bold;
+        }
+        
+        .record-amount.income {
+            color: #4CAF50;
+        }
+        
+        .record-amount.expense {
+            color: #F44336;
+        }
+        
+        .record-date {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .type-selector {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .type-option {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+        }
+        
+        .type-option:first-child {
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .type-option:last-child {
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .type-option.active {
+            background-color: #2196F3;
+            color: white;
+            border-color: #2196F3;
+        }
+        
+        .type-option.income.active {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+        
+        .type-option.expense.active {
+            background-color: #F44336;
+            border-color: #F44336;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .category-item {
+            text-align: center;
+            padding: 10px 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .category-item.active {
+            background-color: #2196F3;
+            color: white;
+            border-color: #2196F3;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #0b7dda;
+        }
+        
+        .chart-container {
+            height: 200px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chart-placeholder {
+            text-align: center;
+            color: #999;
+        }
+        
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .stat-bar {
+            height: 10px;
+            background-color: #2196F3;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 40px 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .filter-option {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .filter-option.active {
+            background-color: #2196F3;
+            color: white;
+            border-color: #2196F3;
+        }
+        
+        .fab {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 56px;
+            height: 56px;
+            background-color: #2196F3;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">记账本</div>
+        
+        <div class="content">
+            <!-- 首页 -->
+            <div id="home-section" class="section active">
+                <div class="summary-card">
+                    <div class="summary-title">本月概览</div>
+                    <div class="summary-numbers">
+                        <div class="income">总收入: ¥5,000</div>
+                        <div class="expense">总支出: ¥2,300</div>
+                        <div class="balance">净余额: ¥2,700</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-title">最近记录</div>
+                    <div class="record-list">
+                        <div class="record-item">
+                            <div>
+                                <div class="record-category">餐饮</div>
+                                <div class="record-date">10-28 17:30</div>
+                            </div>
+                            <div class="record-amount expense">¥85.00</div>
+                        </div>
+                        <div class="record-item">
+                            <div>
+                                <div class="record-category">交通</div>
+                                <div class="record-date">10-28 09:15</div>
+                            </div>
+                            <div class="record-amount expense">¥12.00</div>
+                        </div>
+                        <div class="record-item">
+                            <div>
+                                <div class="record-category">购物</div>
+                                <div class="record-date">10-27 19:00</div>
+                            </div>
+                            <div class="record-amount expense">¥256.00</div>
+                        </div>
+                        <div class="record-item">
+                            <div>
+                                <div class="record-category">工资收入</div>
+                                <div class="record-date">10-27 10:00</div>
+                            </div>
+                            <div class="record-amount income">¥5,000.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 统计页面 -->
+            <div id="stats-section" class="section">
+                <div class="summary-card">
+                    <div class="filter-options">
+                        <div class="filter-option active">月度</div>
+                        <div class="filter-option">年度</div>
+                        <div class="filter-option">自定义</div>
+                    </div>
+                    <div class="summary-title">2025年10月</div>
+                    <div class="summary-numbers">
+                        <div class="income">总收入: ¥5,000</div>
+                        <div class="expense">总支出: ¥2,300</div>
+                        <div class="balance">净余额: ¥2,700</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="filter-options">
+                        <div class="filter-option">数字</div>
+                        <div class="filter-option active">图表</div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="chart-placeholder">
+                            <div>饼图/柱状图展示区域</div>
+                            <div style="font-size: 12px; margin-top: 10px;">实际实现时会使用图表库</div>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-title">分类占比</div>
+                    <div class="stat-item">
+                        <div>餐饮 37%</div>
+                        <div>¥851</div>
+                    </div>
+                    <div class="stat-bar" style="width: 37%;"></div>
+                    
+                    <div class="stat-item">
+                        <div>购物 26%</div>
+                        <div>¥598</div>
+                    </div>
+                    <div class="stat-bar" style="width: 26%;"></div>
+                    
+                    <div class="stat-item">
+                        <div>交通 18%</div>
+                        <div>¥414</div>
+                    </div>
+                    <div class="stat-bar" style="width: 18%;"></div>
+                    
+                    <div class="stat-item">
+                        <div>娱乐 12%</div>
+                        <div>¥276</div>
+                    </div>
+                    <div class="stat-bar" style="width: 12%;"></div>
+                    
+                    <div class="stat-item">
+                        <div>其他 7%</div>
+                        <div>¥161</div>
+                    </div>
+                    <div class="stat-bar" style="width: 7%;"></div>
+                </div>
+            </div>
+            
+            <!-- 记账页面 -->
+            <div id="record-section" class="section">
+                <div class="summary-card">
+                    <div class="type-selector">
+                        <div class="type-option income">收入</div>
+                        <div class="type-option expense active">支出</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-label">金额</div>
+                        <input type="text" class="form-input" placeholder="¥ 0.00">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-label">类别</div>
+                        <div class="category-grid">
+                            <div class="category-item active">餐饮</div>
+                            <div class="category-item">交通</div>
+                            <div class="category-item">购物</div>
+                            <div class="category-item">住房</div>
+                            <div class="category-item">娱乐</div>
+                            <div class="category-item">医疗</div>
+                            <div class="category-item">教育</div>
+                            <div class="category-item">其他</div>
+                        </div>
+                        <div class="category-item" style="grid-column: span 4; margin-top: 5px;">+ 自定义类别</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-label">日期</div>
+                        <input type="text" class="form-input" value="2025-10-28" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-label">备注</div>
+                        <input type="text" class="form-input" placeholder="请输入备注信息...">
+                    </div>
+                    
+                    <button class="btn">保存记录</button>
+                </div>
+            </div>
+            
+            <!-- 搜索页面 -->
+            <div id="search-section" class="section">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="输入关键字搜索...">
+                    <div class="search-icon">🔍</div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-title">最近搜索</div>
+                    <div class="filter-options">
+                        <div class="filter-option">餐饮</div>
+                        <div class="filter-option">交通</div>
+                        <div class="filter-option">工资</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-title">按时间筛选</div>
+                    <div class="filter-options">
+                        <div class="filter-option active">今天</div>
+                        <div class="filter-option">本周</div>
+                        <div class="filter-option">本月</div>
+                        <div class="filter-option">自定义</div>
+                    </div>
+                </div>
+                
+                <div class="summary-card">
+                    <div class="summary-title">按类别筛选</div>
+                    <div class="filter-options">
+                        <div class="filter-option">餐饮</div>
+                        <div class="filter-option">交通</div>
+                        <div class="filter-option">购物</div>
+                        <div class="filter-option">收入</div>
+                        <div class="filter-option">娱乐</div>
+                        <div class="filter-option">住房</div>
+                        <div class="filter-option">医疗</div>
+                        <div class="filter-option">教育</div>
+                    </div>
+                </div>
+                
+                <button class="btn">搜索</button>
+                
+                <div class="summary-card" style="margin-top: 15px;">
+                    <div class="summary-title">搜索结果 (15条)</div>
+                    <div class="record-list">
+                        <div class="record-item">
+                            <div>
+                                <div class="record-category">午餐</div>
+                                <div class="record-date">10-28 12:30</div>
+                            </div>
+                            <div class="record-amount expense">¥45.00</div>
+                        </div>
+                        <div class="record-item">
+                            <div>
+                                <div class="record-category">晚餐</div>
+                                <div class="record-date">10-27 19:00</div>
+                            </div>
+                            <div class="record-amount expense">¥85.00</div>
+                        </div>
+                        <div class="record-item">
+                            <div>
+                                <div class="record-category">超市购物</div>
+                                <div class="record-date">10-25 16:45</div>
+                            </div>
+                            <div class="record-amount expense">¥156.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 底部导航 -->
+        <div class="bottom-nav">
+            <div class="nav-item active" data-target="home-section">
+                <i>🏠</i>
+                <span>首页</span>
+            </div>
+            <div class="nav-item" data-target="stats-section">
+                <i>📊</i>
+                <span>统计</span>
+            </div>
+            <div class="nav-item" data-target="record-section">
+                <i>➕</i>
+                <span>记账</span>
+            </div>
+            <div class="nav-item" data-target="search-section">
+                <i>🔍</i>
+                <span>搜索</span>
+            </div>
+            <div class="nav-item">
+                <i>👤</i>
+                <span>我的</span>
+            </div>
+        </div>
+        
+        <!-- 浮动按钮 -->
+        <div class="fab">+</div>
+    </div>
+
+    <script>
+        // 底部导航切换
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // 移除所有active类
+                document.querySelectorAll('.nav-item').forEach(nav => {
+                    nav.classList.remove('active');
+                });
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // 添加active类
+                this.classList.add('active');
+                const targetId = this.getAttribute('data-target');
+                if (targetId) {
+                    document.getElementById(targetId).classList.add('active');
+                }
+            });
+        });
+        
+        // 类型选择
+        document.querySelectorAll('.type-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.type-option').forEach(opt => {
+                    opt.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+        
+        // 类别选择
+        document.querySelectorAll('.category-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if (!this.textContent.includes('自定义')) {
+                    document.querySelectorAll('.category-item').forEach(cat => {
+                        if (!cat.textContent.includes('自定义')) {
+                            cat.classList.remove('active');
+                        }
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // 筛选选项
+        document.querySelectorAll('.filter-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // 在同一组中的选项，只激活一个
+                const parent = this.parentElement;
+                if (parent.classList.contains('filter-options')) {
+                    parent.querySelectorAll('.filter-option').forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                }
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+实验四：软件分析
+一、实验目的
+理解并掌握使用分析工具检测代码缺陷的方法
+评估工具在正确报告和误报方面的表现
+提升对程序可靠性、可维护性与安全性的认识，提高代码质量和安全性
+二、实验内容
+在本次实验中，你需要借助多种工具来检测项目中的代码缺陷。具体步骤如下：
+
+使用静态分析工具
+
+根据项目使用的语言选择一款静态分析工具，例如：
+**C/C++**：Clang-Tidy、Cppcheck
+Java：SpotBugs、SonarQube
+Python：Pylint、Bandit
+JavaScript：ESLint、JSHint
+如果是其他语言，需要自行搜索静态分析工具
+根据工具文档进行必要的配置，然后运行分析器对项目代码进行扫描
+收集工具报告的缺陷，包括缺陷类型、位置等
+使用大语言模型分析
+
+根据项目的具体需求，选择一个在代码理解和自然语言处理方面表现优异的模型，推荐使用ChatGPT、Github Copilot、Google Gemini、通义千问、文心一言
+根据项目的具体特点和分析需求，设计prompt的内容，使prompt能够引导模型深入理解和分析代码，以确保分析的全面性和准确性
+将项目关键模块或全部代码输入模型，要求模型分析并检查项目中的缺陷
+记录模型的分析结果
+使用形式化工具
+
+选择一款适用于项目编程语言和验证需求的形式化验证工具，例如适用于C/C++、Python的https://github.com/esbmc/esbmc 和适用于Java的https://www.cprover.org/jbmc/ 等
+将项目代码转换为形式化工具可接受的格式
+运行验证过程，记录工具报告的任何不一致或潜在缺陷
+因为项目规模、语言、特性等原因无法使用形式化工具的，则需要另选一个静态分析工具
+评估工具能力
+
+评估个人项目在各个工具下的检测结果，检查真实报告情况（True Positive）和误报情况（False Positive），真实报告是指报告实际存在的缺陷，误报是指报告实际上不存在的缺陷。  
+
+将结果分别记录在 true_positive.json 和 false_positive.json  
+
+记录格式参考下方内容(记录清楚即可)：
+
+{
+    "1": {
+        "CWE": "CWE-401",
+        "name": "MemoryLeakOnRealloc",
+        "File": "stdio/vcscanf.c",
+        "Line": "355",
+        "At": "else if (c == 'n' || c == 'N') {
+          c = BUFFER;"
+    },
+    "2": {
+        "CWE": "CWE-476",
+        "name": "nullPointerRedundantCheck",
+         "File": "src/lexer.c",
+        "Line": "1604",
+        "At": "struct yyguts_t * yyg = (struct yyguts_t*)yyscanner;"
+    },
+    "3": {
+        "cwe": "CWE-476",
+        "name": "nullPointerRedundantCheck",
+        "File": "src/lexer.c",
+        "Line": "1605",
+        "At": "char *dest = YY_CURRENT_BUFFER_LVALUE->yy_ch_buf;"
+    },
+}
+特意在项目中植入一些代码缺陷，比如Memory Leak、Double Free、NULL Pointer Dereference类型的缺陷，同样检查各工具的真实报告情况和误报情况，并记录在true_positive.json和false_positive.json中
+
+每个工具最多只需要检查10个缺陷报告即可
+
+针对各工具的分析结果，对比其分析能力，分析误报可能的原因
+
+三、实验提交
+3.1 实验报告
+编写一份实验报告，包含以下内容：
+
+三种分析工具的检测过程
+简述选择的工具、工具运行的方式(配置或prompt等)以及运行的结果
+对分析工具真实报告和误报情况的评估
+分析每种工具报告的项目中的缺陷，哪些是真实存在的，哪些是误报
+列举植入的代码缺陷，说明各工具能否正确检查
+评估误报率，并讨论可能的原因，如工具的限制、代码复杂性等
+对选取的分析工具能力的整体评价和比较
+比较每种工具在检测不同类型的缺陷方面的能力
+根据实验结果，提出在类似项目中推荐使用哪些工具或工具组合
+3.2 提交内容
+在本次实验中，你需要提交一个打包成zip的文件夹，命名为：实验4_学号_姓名.zip。其压缩前的格式为：
+
+实验4_学号_姓名
+ ├── 实验报告.pdf
+ ├── project                        (项目代码)
+ ├── flaw_report                    (缺陷报告文件夹)
+     └──CppCheck                   (静态分析工具的结果)
+         ├──true_positive.json
+         └──false_positive.json
+     └──ChatGPT                         (大语言模型的结果)
+         ├──true_positive.json
+         └──false_positive.json
+     └──ESBMC                         (形式化工具验证的结果)
+         ├──true_positive.json
+         └──false_positive.json
+ └──                                (其他可选文件夹，如工具配置、脚本等)
+四 提交方式及截止日期
+请于2025年12月13日00:10前，将实验报告压缩文件提交至cslab-cms。

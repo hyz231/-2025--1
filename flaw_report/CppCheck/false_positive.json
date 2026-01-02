@@ -1,0 +1,73 @@
+{
+    "1": {
+        "CWE": "CWE-398",
+        "name": "returnByReference",
+        "File": "code_cpp/src/Category.h",
+        "Line": "11",
+        "At": "std::string getId() const;"
+    },
+    "2": {
+        "CWE": "CWE-398",
+        "name": "useStlAlgorithm",
+        "File": "code_cpp/src/Category.cpp",
+        "Line": "34",
+        "At": "for (const auto &cat : categories) {"
+    },
+    "3": {
+        "CWE": "CWE-398",
+        "name": "noExplicitConstructor",
+        "File": "code_cpp/src/Storage.h",
+        "Line": "10",
+        "At": "Storage(const std::string &dir=\"data\");"
+    },
+    "4": {
+        "CWE": "CWE-571",
+        "name": "knownConditionTrueFalse",
+        "File": "code_cpp/src/MainUI.cpp",
+        "Line": "132",
+        "At": "if (index>=1) {"
+    },
+    "5": {
+        "CWE": "CWE-398",
+        "name": "constVariablePointer",
+        "File": "code_cpp/src/Storage.cpp",
+        "Line": "69",
+        "At": "char* buffer = new char[1024];"
+    },
+    "6": {
+        "CWE": "CWE-561",
+        "name": "unusedFunction",
+        "File": "code_cpp/src/Search.cpp",
+        "Line": "62",
+        "At": "void Search::processSearchResults(const std::vector<Record> &records)"
+    },
+    "7": {
+        "CWE": "CWE-398",
+        "name": "useStlAlgorithm",
+        "File": "code_cpp/src/Search.cpp",
+        "Line": "23",
+        "At": "for (const auto &record : records) {"
+    },
+    "8": {
+        "CWE": "CWE-398",
+        "name": "returnByReference",
+        "File": "code_cpp/src/Record.h",
+        "Line": "12",
+        "At": "std::string getId() const;"
+    },
+    "9": {
+        "CWE": "CWE-398",
+        "name": "useStlAlgorithm",
+        "File": "code_cpp/src/Statistics.cpp",
+        "Line": "47",
+        "At": "for (const auto &entry : totals) {"
+    },
+    "10": {
+        "CWE": "CWE-571",
+        "name": "knownConditionTrueFalse",
+        "File": "code_cpp/src/Storage.cpp",
+        "Line": "56",
+        "At": "if (!c.isCustom()) {"
+    }
+}
+

@@ -1,0 +1,66 @@
+{
+    "1": {
+        "CWE": "CWE-401",
+        "name": "MemoryLeak",
+        "File": "code_cpp/src/Storage.cpp",
+        "Line": "69",
+        "At": "char* buffer = new char[1024];"
+    },
+    "2": {
+        "CWE": "CWE-415",
+        "name": "DoubleFree",
+        "File": "code_cpp/src/Search.cpp",
+        "Line": "77",
+        "At": "delete resultCount;  // Double free - resultCount was already deleted above"
+    },
+    "3": {
+        "CWE": "CWE-476",
+        "name": "NullPointerDereference",
+        "File": "code_cpp/src/Statistics.cpp",
+        "Line": "118",
+        "At": "std::cout << \"Formatted: \" << summaryBuffer << std::endl;"
+    },
+    "4": {
+        "CWE": "CWE-416",
+        "name": "UseAfterFree",
+        "File": "code_cpp/src/User.cpp",
+        "Line": "121",
+        "At": "int value = userData[10];  // Use after free - userData was already deleted"
+    },
+    "5": {
+        "CWE": "CWE-120",
+        "name": "BufferOverflow",
+        "File": "code_cpp/src/Storage.cpp",
+        "Line": "125",
+        "At": "std::strcpy(buffer, categoryName.c_str());  // Buffer overflow if categoryName is too long"
+    },
+    "6": {
+        "CWE": "CWE-457",
+        "name": "UninitializedVariable",
+        "File": "code_cpp/src/Statistics.cpp",
+        "Line": "135",
+        "At": "sum += static_cast<int>(record.getAmount());  // Using uninitialized 'sum'"
+    },
+    "7": {
+        "CWE": "CWE-190",
+        "name": "IntegerOverflow",
+        "File": "code_cpp/src/Category.cpp",
+        "Line": "62",
+        "At": "int total = baseCount * multiplier;  // Integer overflow possible"
+    },
+    "8": {
+        "CWE": "CWE-369",
+        "name": "DivisionByZero",
+        "File": "code_cpp/src/Statistics.cpp",
+        "Line": "152",
+        "At": "double percentage = (value / total) * 100.0;  // Division by zero if total == 0"
+    },
+    "9": {
+        "CWE": "CWE-125",
+        "name": "OutOfBoundsAccess",
+        "File": "code_cpp/src/Search.cpp",
+        "Line": "104",
+        "At": "int value = recordIds[count];  // Out of bounds access - valid indices are 0 to ARRAY_SIZE-1"
+    }
+}
+

@@ -1,0 +1,59 @@
+{
+    "1": {
+        "CWE": "CWE-401",
+        "name": "MemoryLeak",
+        "File": "code_cpp/src/Storage.cpp",
+        "Result": "VERIFICATION FAILED",
+        "At": "malloc(1024) (forgotten memory detected)"
+    },
+    "2": {
+        "CWE": "CWE-120",
+        "name": "BufferOverflow",
+        "File": "code_cpp/src/Storage.cpp",
+        "Result": "VERIFICATION FAILED",
+        "At": "strcpy(buf, \"AAAAAAAA\") -> array bounds violated"
+    },
+    "3": {
+        "CWE": "CWE-369",
+        "name": "DivisionByZero",
+        "File": "code_cpp/src/Statistics.cpp",
+        "Result": "VERIFICATION FAILED",
+        "At": "1 / x -> division by zero"
+    },
+    "4": {
+        "CWE": "CWE-415",
+        "name": "DoubleFree",
+        "File": "code_cpp/src/Search.cpp",
+        "Result": "VERIFICATION FAILED",
+        "At": "free(p) twice -> invalidated dynamic object freed"
+    },
+    "5": {
+        "CWE": "CWE-190",
+        "name": "IntegerOverflow",
+        "File": "code_cpp/src/Category.cpp",
+        "Result": "VERIFICATION FAILED",
+        "At": "INT_MAX + 1 -> arithmetic overflow on add"
+    },
+    "6": {
+        "CWE": "CWE-476",
+        "name": "NullPointerDereference",
+        "File": "code_cpp/src/Statistics.cpp",
+        "Result": "VERIFICATION FAILED",
+        "At": "dereference of NULL pointer"
+    },
+    "7": {
+        "CWE": "CWE-125",
+        "name": "OutOfBoundsAccess",
+        "File": "code_cpp/src/Search.cpp",
+        "Result": "VERIFICATION FAILED",
+        "At": "arr[idx] with idx >= size -> array bounds violated"
+    },
+    "8": {
+        "CWE": "CWE-416",
+        "name": "UseAfterFree",
+        "File": "code_cpp/src/User.cpp",
+        "Result": "VERIFICATION FAILED",
+        "At": "access after free -> dereference failure"
+    }
+}
+

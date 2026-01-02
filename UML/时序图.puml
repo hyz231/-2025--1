@@ -1,0 +1,91 @@
+@startuml
+!theme plain
+
+title 记账App核心功能时序图
+
+actor 用户 as User
+participant "主界面\nMainUI" as MainUI
+participant "记账界面\nRecordUI" as RecordUI
+participant "记录管理\nRecord" as Record
+participant "类别管理\nCategory" as Category
+participant "统计界面\nStatisticsUI" as StatsUI
+participant "统计分析\nStatistics" as Statistics
+participant "搜索界面\nSearchUI" as SearchUI
+participant "搜索功能\nSearch" as Search
+
+== 记账流程 ==
+
+User -> MainUI: 点击"记账"按钮
+MainUI -> RecordUI: navigateToRecord()
+RecordUI -> User: showRecordForm()
+
+User -> RecordUI: 选择收入/支出类型
+RecordUI -> User: colorCodeType()\n更新界面颜色
+
+User -> RecordUI: 输入金额
+User -> RecordUI: 选择日期
+
+RecordUI -> Category: getCategoryList()
+Category --> RecordUI: 返回类别列表\n(固定+自定义)
+RecordUI -> User: 显示类别选择
+
+alt 选择现有类别
+    User -> RecordUI: 选择预设类别
+else 添加自定义类别
+    User -> RecordUI: 点击"自定义类别"
+    RecordUI -> Category: addCustomCategory()
+    Category --> RecordUI: 返回新类别ID
+    RecordUI -> User: 更新类别列表
+end
+
+User -> RecordUI: 填写备注(可选)
+User -> RecordUI: 点击"保存"
+
+RecordUI -> Record: save()\n包含所有字段
+Record --> RecordUI: 返回保存结果
+RecordUI -> User: 显示保存成功提示
+RecordUI -> MainUI: 返回主界面
+
+== 统计流程 ==
+
+User -> MainUI: 点击"统计"按钮
+MainUI -> StatsUI: navigateToStatistics()
+StatsUI -> User: showTimeView()\n显示统计选项
+
+User -> StatsUI: 选择统计类型\n(时间/类别)
+User -> StatsUI: 选择时间范围\n(月度/年度)
+
+StatsUI -> Statistics: generateByTime()\n传入时间参数
+Statistics -> Record: getRecordsByDateRange()
+Record --> Statistics: 返回记录列表
+Statistics -> Statistics: calculateSummary()\n计算统计结果
+Statistics --> StatsUI: 返回FinancialSummary对象
+
+User -> StatsUI: 切换显示形式\n(数字/图表)
+StatsUI -> Statistics: generateChartData()
+Statistics --> StatsUI: 返回ChartData对象
+StatsUI -> User: displayResults()\n显示统计结果
+
+== 搜索流程 ==
+
+User -> MainUI: 点击"搜索"按钮
+MainUI -> SearchUI: navigateToSearch()
+SearchUI -> User: showSearchForm()\n显示搜索界面
+
+User -> SearchUI: 输入搜索条件
+alt 按时间搜索
+    User -> SearchUI: 选择时间范围
+    SearchUI -> Search: searchByTime()\n传入时间参数
+else 按关键字搜索
+    User -> SearchUI: 输入关键字
+    SearchUI -> Search: searchByKeyword()\n传入关键字
+else 按类别搜索
+    User -> SearchUI: 选择类别
+    SearchUI -> Search: searchByCategory()\n传入类别
+end
+
+Search -> Record: 查询匹配记录
+Record --> Search: 返回搜索结果
+Search --> SearchUI: 返回Record列表
+SearchUI -> User: displayResults()\n显示搜索结果
+@enduml

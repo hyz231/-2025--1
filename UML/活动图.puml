@@ -1,0 +1,71 @@
+@startuml
+!theme plain
+
+title 记账App用户活动图
+
+start
+:用户启动App;
+:显示主界面(MainUI);
+
+repeat
+  :用户选择功能;
+  
+  if (选择记账功能?) then (是)
+    partition "记账流程" {
+      :进入RecordUI;
+      :显示记账表单;
+      :用户选择收入/支出类型;
+      :用户输入金额;
+      :用户选择类别;
+      if (需要自定义类别?) then (是)
+        :添加自定义类别;
+        :Category保存新类别;
+      else (否)
+      endif
+      :用户填写备注(可选);
+      :用户确认保存;
+      :Record保存记录;
+      :显示保存成功;
+    }
+  else if (选择统计功能?) then (是)
+    partition "统计流程" {
+      :进入StatisticsUI;
+      :显示统计选项;
+      :用户选择统计类型;
+      if (按时间统计?) then (是)
+        :用户选择时间范围;
+        :Statistics生成时间统计;
+      else (按类别统计)
+        :用户选择类别范围;
+        :Statistics生成类别统计;
+      endif
+      :用户选择显示形式;
+      if (数字汇总?) then (是)
+        :显示数字统计结果;
+      else (图表展示)
+        :显示图表统计结果;
+      endif
+    }
+  else if (选择搜索功能?) then (是)
+    partition "搜索流程" {
+      :进入SearchUI;
+      :显示搜索表单;
+      :用户输入搜索条件;
+      if (按时间搜索?) then (是)
+        :Search执行时间搜索;
+      else if (按关键字搜索?) then (是)
+        :Search执行关键字搜索;
+      else if (按类别搜索?) then (是)
+        :Search执行类别搜索;
+      endif
+      :Search从Record获取数据;
+      :显示搜索结果;
+    }
+  else (其他操作)
+    :执行其他操作;
+  endif
+  
+  :返回主界面;
+repeat while (继续使用?) is (yes)
+stop
+@enduml

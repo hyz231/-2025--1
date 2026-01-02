@@ -1,0 +1,93 @@
+@startuml
+!theme plain
+
+class User {
+  - userId: String
+  - username: String
+  + addRecord()
+  + viewStatistics()
+  + searchRecords()
+}
+
+class Record {
+  - recordId: String
+  - date: Date
+  - amount: Double
+  - type: String {Income, Expense}
+  - category: String
+  - note: String
+  + getRecordInfo()
+}
+
+class Category {
+  - categoryId: String
+  - name: String
+  - isCustom: Boolean
+  + addCustomCategory()
+  + getCategoryList()
+}
+
+class Statistics {
+  - period: String
+  - type: String {Time, Category}
+  + generateByTime()
+  + generateByCategory()
+  + showChart()
+  + showSummary()
+}
+
+class Search {
+  - keyword: String
+  - timeRange: Date[]
+  - category: String
+  + searchByTime()
+  + searchByKeyword()
+  + searchByCategory()
+}
+
+' UI类
+class MainUI {
+  + showHomeScreen()
+  + setupBottomNavigation()
+  + navigateToRecord()
+  + navigateToStatistics()
+  + navigateToSearch()
+}
+
+class RecordUI {
+  + showRecordForm()
+  + selectCategory()
+  + saveRecord()
+  + colorCodeType()
+}
+
+class StatisticsUI {
+  + showTimeView()
+  + showCategoryView()
+  + toggleChartSummary()
+  + displayResults()
+}
+
+class SearchUI {
+  + showSearchForm()
+  + filterByTime()
+  + filterByKeyword()
+  + filterByCategory()
+  + displayResults()
+}
+
+' 核心关系
+User "1" -- "*" Record : 拥有
+Record "1" -- "1" Category : 属于
+Statistics --> Record : 分析
+Search --> Record : 查询
+
+' UI关系
+MainUI --> RecordUI : 跳转
+MainUI --> StatisticsUI : 跳转
+MainUI --> SearchUI : 跳转
+
+RecordUI --> Record : 创建
+StatisticsUI --> Statistics : 使用
+SearchUI --> Search : 使用
+

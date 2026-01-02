@@ -1,0 +1,31 @@
+{
+    "1": {
+        "CWE": "CWE-563",
+        "name": "UnusedVariable",
+        "File": "code_cpp/src/Storage.cpp",
+        "Line": "69",
+        "At": "char* buffer = new char[1024];  // Variable allocated but never used"
+    },
+    "2": {
+        "CWE": "CWE-561",
+        "name": "UnusedFunction",
+        "File": "code_cpp/src/Search.cpp",
+        "Line": "62",
+        "At": "void Search::processSearchResults(const std::vector<Record> &records)"
+    },
+    "3": {
+        "CWE": "CWE-561",
+        "name": "UnusedFunction",
+        "File": "code_cpp/src/Search.cpp",
+        "Line": "82",
+        "At": "void Search::processRecordArray(const std::vector<Record> &records)"
+    },
+    "4": {
+        "CWE": "CWE-561",
+        "name": "UnusedFunction",
+        "File": "code_cpp/src/Statistics.cpp",
+        "Line": "105",
+        "At": "void Statistics::formatSummaryData(const TimeSummary &summary)"
+    }
+}
+

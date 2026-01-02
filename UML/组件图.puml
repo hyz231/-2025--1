@@ -1,0 +1,44 @@
+@startuml
+!theme plain
+
+package "用户界面组件" {
+  [MainUI] as MainUI
+  [RecordUI] as RecordUI
+  [StatisticsUI] as StatsUI
+  [SearchUI] as SearchUI
+}
+
+package "业务逻辑组件" {
+  [User] as User
+  [Record] as Record
+  [Category] as Category
+  [Statistics] as Statistics
+  [Search] as Search
+}
+
+package "数据存储组件" {
+  [User Data] as UserData
+  [Record Data] as RecordData
+  [Category Data] as CategoryData
+}
+
+[图表库] as ChartLib
+
+MainUI --> RecordUI : 导航
+MainUI --> StatsUI : 导航
+MainUI --> SearchUI : 导航
+
+RecordUI --> Record : 创建记录
+RecordUI --> Category : 获取类别
+
+StatsUI --> Statistics : 请求统计
+Statistics --> Record : 分析数据
+Statistics --> ChartLib : 生成图表
+
+SearchUI --> Search : 执行搜索
+Search --> Record : 查询记录
+
+Record --> RecordData : 持久化
+User --> UserData : 持久化
+Category --> CategoryData : 持久化
+@enduml

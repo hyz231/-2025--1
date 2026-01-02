@@ -1,0 +1,439 @@
+﻿Checking src\Category.cpp ...  
+cppcheck.exe : <?xml version="1.0" encoding="UTF-8"?>
+所在位置 C:\Users\何衍泽\AppData\Local\Temp\ps-script-df67c617-7d26-4606-ac82-a4f63152927b.ps1:7 字符: 14
++ ... d code_cpp; & "D:\cppcheck\cppcheck.exe" --enable=all --xml --xml-ver ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (<?xml version="1.0" encoding="UTF-8"?>:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+<results version="2">
+    <cppcheck version="2.18.0"/>
+    <errors>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;string&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;string&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Category.h" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Category.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;utility&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;utility&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Category.cpp" line="2" column="0"/>
+        </error>
+        <error id="returnByReference" severity="performance" msg="Function &apos;getId()&apos; should return member &ap
+os;id_&apos; by const reference." verbose="Function &apos;getId()&apos; should return member &apos;id_&apos; by const r
+eference." file0="src/Category.cpp">
+            <location file="src/Category.h" line="11" column="17"/>
+        </error>
+        <error id="returnByReference" severity="performance" msg="Function &apos;getName()&apos; should return member &
+apos;name_&apos; by const reference." verbose="Function &apos;getName()&apos; should return member &apos;name_&apos; by
+ const reference." file0="src/Category.cpp">
+            <location file="src/Category.h" line="12" column="17"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::any_of algorithm instead of a raw loop." 
+verbose="Consider using std::any_of algorithm instead of a raw loop." cwe="398" file0="src/Category.cpp">
+            <location file="src/Category.cpp" line="34" column="43"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::transform algorithm instead of a raw loop
+." verbose="Consider using std::transform algorithm instead of a raw loop." cwe="398" file0="src/Category.cpp">
+            <location file="src/Category.cpp" line="49" column="15"/>
+        </error>
+1/8 files checked 6% done
+Checking src\MainUI.cpp ...
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;string&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;string&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/MainUI.h" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/MainUI.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;string&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;string&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/User.h" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/User.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;string&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;string&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Record.h" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;string&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;string&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Search.h" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;utility&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;utility&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Search.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Search.h" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;string&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;string&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Statistics.h" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Statistics.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;string&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;string&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Storage.h" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Storage.h" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;chrono&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;chrono&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/MainUI.cpp" line="2" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;ctime&gt; not found. Please note
+: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;ctime&gt; not foun
+d. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/MainUI.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iomanip&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iomanip&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/MainUI.cpp" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please n
+ote: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; no
+t found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/MainUI.cpp" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;limits&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;limits&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/MainUI.cpp" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;sstream&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;sstream&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/MainUI.cpp" line="7" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;utility&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;utility&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/MainUI.cpp" line="8" column="0"/>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;Storage&apos; has a constructor with 1 argu
+ment that is not explicit." verbose="Class &apos;Storage&apos; has a constructor with 1 argument that is not explicit. 
+Such, so called &quot;Converting constructors&quot;, should in general be explicit for type safety reasons as that prev
+ents unintended implicit conversions." cwe="398" file0="src/MainUI.cpp">
+            <location file="src/Storage.h" line="10" column="5"/>
+            <symbol>Storage</symbol>
+        </error>
+        <error id="noExplicitConstructor" severity="style" msg="Class &apos;User&apos; has a constructor with 1 argumen
+t that is not explicit." verbose="Class &apos;User&apos; has a constructor with 1 argument that is not explicit. Such, 
+so called &quot;Converting constructors&quot;, should in general be explicit for type safety reasons as that prevents u
+nintended implicit conversions." cwe="398" file0="src/MainUI.cpp">
+            <location file="src/User.h" line="15" column="5"/>
+            <symbol>User</symbol>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;index&gt;=1&apos; is always true" ver
+bose="Condition &apos;index&gt;=1&apos; is always true" cwe="571" file0="src/MainUI.cpp">
+            <location file="src/MainUI.cpp" line="132" column="15" info="Condition &apos;index&gt;=1&apos; is always tr
+ue"/>
+            <location file="src/MainUI.cpp" line="121" column="15" info="Assuming that condition &apos;index==0&apos; i
+s not redundant"/>
+        </error>
+Checking src\MainUI.cpp: _WIN32...
+2/8 files checked 42% done
+Checking src\Record.cpp ...
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;sstream&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;sstream&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Record.cpp" line="2" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;utility&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;utility&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Record.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;vector&gt; not found. Please not
+e: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;vector&gt; not fo
+und. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Record.cpp" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;stdexcept&gt; not found. Please 
+note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;stdexcept&gt; 
+not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Record.cpp" line="5" column="0"/>
+        </error>
+        <error id="returnByReference" severity="performance" msg="Function &apos;getId()&apos; should return member &ap
+os;id_&apos; by const reference." verbose="Function &apos;getId()&apos; should return member &apos;id_&apos; by const r
+eference." file0="src/Record.cpp">
+            <location file="src/Record.h" line="12" column="17"/>
+        </error>
+        <error id="returnByReference" severity="performance" msg="Function &apos;getDate()&apos; should return member &
+apos;date_&apos; by const reference." verbose="Function &apos;getDate()&apos; should return member &apos;date_&apos; by
+ const reference." file0="src/Record.cpp">
+            <location file="src/Record.h" line="13" column="17"/>
+        </error>
+        <error id="returnByReference" severity="performance" msg="Function &apos;getCategory()&apos; should return memb
+er &apos;category_&apos; by const reference." verbose="Function &apos;getCategory()&apos; should return member &apos;ca
+tegory_&apos; by const reference." file0="src/Record.cpp">
+            <location file="src/Record.h" line="16" column="17"/>
+        </error>
+        <error id="returnByReference" severity="performance" msg="Function &apos;getNote()&apos; should return member &
+apos;note_&apos; by const reference." verbose="Function &apos;getNote()&apos; should return member &apos;note_&apos; by
+ const reference." file0="src/Record.cpp">
+            <location file="src/Record.h" line="17" column="17"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;windows.h&gt; not found. Please 
+note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;windows.h&gt; 
+not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Record.cpp" line="7" column="0"/>
+        </error>
+Checking src\Record.cpp: _WIN32...
+3/8 files checked 51% done
+Checking src\Search.cpp ...
+        <error id="doubleFree" severity="error" msg="Memory pointed to by &apos;resultCount&apos; is freed twice." verb
+ose="Memory pointed to by &apos;resultCount&apos; is freed twice." cwe="415" file0="src/Search.cpp">
+            <location file="src/Search.cpp" line="77" column="12"/>
+            <location file="src/Search.cpp" line="73" column="5"/>
+            <symbol>resultCount</symbol>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::copy_if algorithm instead of a raw loop."
+ verbose="Consider using std::copy_if algorithm instead of a raw loop." cwe="398" file0="src/Search.cpp">
+            <location file="src/Search.cpp" line="23" column="16"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::copy_if algorithm instead of a raw loop."
+ verbose="Consider using std::copy_if algorithm instead of a raw loop." cwe="398" file0="src/Search.cpp">
+            <location file="src/Search.cpp" line="36" column="16"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::copy_if algorithm instead of a raw loop."
+ verbose="Consider using std::copy_if algorithm instead of a raw loop." cwe="398" file0="src/Search.cpp">
+            <location file="src/Search.cpp" line="50" column="16"/>
+        </error>
+4/8 files checked 61% done
+Checking src\Statistics.cpp ...
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;algorithm&gt; not found. Please 
+note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;algorithm&gt; 
+not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Statistics.cpp" line="2" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iomanip&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iomanip&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Statistics.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please n
+ote: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; no
+t found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Statistics.cpp" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;map&gt; not found. Please note: 
+Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;map&gt; not found. P
+lease note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Statistics.cpp" line="5" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;utility&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;utility&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Statistics.cpp" line="6" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;cstring&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;cstring&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Statistics.cpp" line="7" column="0"/>
+        </error>
+        <error id="normalCheckLevelMaxBranches" severity="information" msg="Limiting analysis of branches. Use --check-
+level=exhaustive to analyze all branches." verbose="Limiting analysis of branches. Use --check-level=exhaustive to anal
+yze all branches." file0="src/Statistics.cpp">
+            <location file="src/Statistics.cpp" line="0" column="0"/>
+        </error>
+        <error id="nullPointer" severity="warning" msg="Possible null pointer dereference: summaryBuffer" verbose="Poss
+ible null pointer dereference: summaryBuffer" cwe="476" file0="src/Statistics.cpp">
+            <location file="src/Statistics.cpp" line="118" column="35" info="Null pointer dereference"/>
+            <location file="src/Statistics.cpp" line="110" column="23" info="Assuming condition is false"/>
+            <location file="src/Statistics.cpp" line="107" column="27" info="Assignment &apos;summaryBuffer=nullptr&apo
+s;, assigned value is 0"/>
+            <symbol>summaryBuffer</symbol>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::accumulate algorithm instead of a raw loo
+p." verbose="Consider using std::accumulate algorithm instead of a raw loop." cwe="398" file0="src/Statistics.cpp">
+            <location file="src/Statistics.cpp" line="47" column="20"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::accumulate algorithm instead of a raw loo
+p." verbose="Consider using std::accumulate algorithm instead of a raw loop." cwe="398" file0="src/Statistics.cpp">
+            <location file="src/Statistics.cpp" line="135" column="13"/>
+        </error>
+        <error id="legacyUninitvar" severity="error" msg="Uninitialized variable: sum" verbose="Uninitialized variable:
+ sum" cwe="457" file0="src/Statistics.cpp">
+            <location file="src/Statistics.cpp" line="135" column="9"/>
+            <symbol>sum</symbol>
+        </error>
+5/8 files checked 77% done
+Checking src\Storage.cpp ...
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;fstream&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;fstream&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Storage.cpp" line="2" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;filesystem&gt; not found. Please
+ note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;filesystem&gt
+; not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Storage.cpp" line="3" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;iostream&gt; not found. Please n
+ote: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;iostream&gt; no
+t found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Storage.cpp" line="4" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;sstream&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;sstream&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/Storage.cpp" line="5" column="0"/>
+        </error>
+        <error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;c.isCustom()&apos; is always true" ve
+rbose="Condition &apos;c.isCustom()&apos; is always true" cwe="571" file0="src/Storage.cpp">
+            <location file="src/Storage.cpp" line="56" column="71" info="Condition &apos;c.isCustom()&apos; is always t
+rue"/>
+            <location file="src/Storage.cpp" line="53" column="13" info="Assuming that condition &apos;!c.isCustom()&ap
+os; is not redundant"/>
+        </error>
+        <error id="constVariablePointer" severity="style" msg="Variable &apos;buffer&apos; can be declared as pointer t
+o const" verbose="Variable &apos;buffer&apos; can be declared as pointer to const" cwe="398" file0="src/Storage.cpp">
+            <location file="src/Storage.cpp" line="69" column="11" info="Variable &apos;buffer&apos; can be declared as
+ pointer to const"/>
+            <symbol>buffer</symbol>
+        </error>
+        <error id="unusedAllocatedMemory" severity="style" msg="Variable &apos;buffer&apos; is allocated memory that is
+ never used." verbose="Variable &apos;buffer&apos; is allocated memory that is never used." cwe="563" file0="src/Storag
+e.cpp">
+            <location file="src/Storage.cpp" line="69" column="11"/>
+            <symbol>buffer</symbol>
+        </error>
+6/8 files checked 87% done
+Checking src\User.cpp ...
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;algorithm&gt; not found. Please 
+note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;algorithm&gt; 
+not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/User.cpp" line="2" column="0"/>
+        </error>
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;utility&gt; not found. Please no
+te: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;utility&gt; not 
+found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/User.cpp" line="3" column="0"/>
+        </error>
+        <error id="returnByReference" severity="performance" msg="Function &apos;getRecords()&apos; should return membe
+r &apos;records_&apos; by const reference." verbose="Function &apos;getRecords()&apos; should return member &apos;recor
+ds_&apos; by const reference." file0="src/User.cpp">
+            <location file="src/User.h" line="21" column="25"/>
+        </error>
+        <error id="useStlAlgorithm" severity="style" msg="Consider using std::any_of algorithm instead of a raw loop." 
+verbose="Consider using std::any_of algorithm instead of a raw loop." cwe="398" file0="src/User.cpp">
+            <location file="src/User.cpp" line="88" column="54"/>
+        </error>
+7/8 files checked 98% done
+Checking src\main.cpp ...
+        <error id="missingIncludeSystem" severity="information" msg="Include file: &lt;windows.h&gt; not found. Please 
+note: Cppcheck does not need standard library headers to get proper results." verbose="Include file: &lt;windows.h&gt; 
+not found. Please note: Cppcheck does not need standard library headers to get proper results.">
+            <location file="src/main.cpp" line="3" column="0"/>
+        </error>
+Checking src\main.cpp: _WIN32...
+8/8 files checked 100% done
+        <error id="unusedFunction" severity="style" msg="The function &apos;getCategoryList&apos; is never used." verbo
+se="The function &apos;getCategoryList&apos; is never used." cwe="561">
+            <location file="src/Category.cpp" line="45" column="36"/>
+            <symbol>getCategoryList</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;calculateTotalCategoryCount&apos; is never 
+used." verbose="The function &apos;calculateTotalCategoryCount&apos; is never used." cwe="561">
+            <location file="src/Category.cpp" line="56" column="15"/>
+            <symbol>calculateTotalCategoryCount</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getKeyword&apos; is never used." verbose="T
+he function &apos;getKeyword&apos; is never used." cwe="561">
+            <location file="src/Search.cpp" line="11" column="28"/>
+            <symbol>getKeyword</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getTimeRange&apos; is never used." verbose=
+"The function &apos;getTimeRange&apos; is never used." cwe="561">
+            <location file="src/Search.cpp" line="13" column="45"/>
+            <symbol>getTimeRange</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;processSearchResults&apos; is never used." 
+verbose="The function &apos;processSearchResults&apos; is never used." cwe="561">
+            <location file="src/Search.cpp" line="62" column="14"/>
+            <symbol>processSearchResults</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;processRecordArray&apos; is never used." ve
+rbose="The function &apos;processRecordArray&apos; is never used." cwe="561">
+            <location file="src/Search.cpp" line="82" column="14"/>
+            <symbol>processRecordArray</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setPeriod&apos; is never used." verbose="Th
+e function &apos;setPeriod&apos; is never used." cwe="561">
+            <location file="src/Statistics.cpp" line="12" column="18"/>
+            <symbol>setPeriod</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;setMode&apos; is never used." verbose="The 
+function &apos;setMode&apos; is never used." cwe="561">
+            <location file="src/Statistics.cpp" line="13" column="18"/>
+            <symbol>setMode</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getPeriod&apos; is never used." verbose="Th
+e function &apos;getPeriod&apos; is never used." cwe="561">
+            <location file="src/Statistics.cpp" line="15" column="32"/>
+            <symbol>getPeriod</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;getMode&apos; is never used." verbose="The 
+function &apos;getMode&apos; is never used." cwe="561">
+            <location file="src/Statistics.cpp" line="16" column="30"/>
+            <symbol>getMode</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;formatSummaryData&apos; is never used." ver
+bose="The function &apos;formatSummaryData&apos; is never used." cwe="561">
+            <location file="src/Statistics.cpp" line="105" column="18"/>
+            <symbol>formatSummaryData</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;calculateAverage&apos; is never used." verb
+ose="The function &apos;calculateAverage&apos; is never used." cwe="561">
+            <location file="src/Statistics.cpp" line="127" column="17"/>
+            <symbol>calculateAverage</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;calculatePercentage&apos; is never used." v
+erbose="The function &apos;calculatePercentage&apos; is never used." cwe="561">
+            <location file="src/Statistics.cpp" line="148" column="20"/>
+            <symbol>calculatePercentage</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;copyCategoryName&apos; is never used." verb
+ose="The function &apos;copyCategoryName&apos; is never used." cwe="561">
+            <location file="src/Storage.cpp" line="118" column="15"/>
+            <symbol>copyCategoryName</symbol>
+        </error>
+        <error id="unusedFunction" severity="style" msg="The function &apos;processUserData&apos; is never used." verbo
+se="The function &apos;processUserData&apos; is never used." cwe="561">
+            <location file="src/User.cpp" line="108" column="12"/>
+            <symbol>processUserData</symbol>
+        </error>
+        <error id="checkersReport" severity="information" msg="Active checkers: 169/966 (use --checkers-report=&lt;file
+name&gt; to see details)" verbose="Active checkers: 169/966 (use --checkers-report=&lt;filename&gt; to see details)"/>
+    </errors>
+</results>
